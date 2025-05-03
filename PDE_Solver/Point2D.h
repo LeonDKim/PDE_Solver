@@ -12,11 +12,11 @@ public:
     float y; ///< The y-coordinate of the point.
 
 
-    static Point2D zero; ///< A static point representing the origin (0, 0).
-    static Point2D left; ///< A static point representing the (-1, 0).
-    static Point2D right;
-    static Point2D up;
-    static Point2D down;
+    const static Point2D zero; ///< A static point representing the origin (0, 0).
+    const static Point2D left; ///< A static point representing the (-1, 0).
+    const static Point2D right;
+    const static Point2D up;
+    const static Point2D down;
 
     /**
      * @brief Constructs a Point with the given coordinates.
