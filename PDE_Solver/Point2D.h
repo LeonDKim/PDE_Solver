@@ -12,8 +12,8 @@ public:
     float y; ///< The y-coordinate of the point.
 
 
-    const static Point2D zero; ///< A static point representing the origin (0, 0).
-    const static Point2D left; ///< A static point representing the (-1, 0).
+    const static Point2D zero; ///< A constant static point representing the origin (0, 0).
+    const static Point2D left; ///< A constant static point representing the (-1, 0).
     const static Point2D right;
     const static Point2D up;
     const static Point2D down;
