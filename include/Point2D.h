@@ -37,11 +37,11 @@ public:
 	// */
 	//Point2D(const std::pair<float, float>& coords);
 
- //   /**
- //    * @brief Constructs a Point from a vector of coordinates.
- //    * @param coords The coordinates to copy.
-	// */
-	//Point2D(const std::vector<float>& coords);
+   /**
+    * @brief Constructs a Point from a vector of coordinates.
+    * @param coords The coordinates to copy.
+	*/
+	Point2D(const std::vector<float>& coords);
 
 
     /**

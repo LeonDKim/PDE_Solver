@@ -32,7 +32,7 @@
 *.app
 
 # VSCode Specific
-.vs/
 .vscode/
 *.pdb
 x64/
+build/
