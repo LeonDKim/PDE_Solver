@@ -24,6 +24,10 @@ static void test_poly()
 }
 int main()  
 {   
-    test_point2d();
+	std::cout << sizeof(float) << std::endl;
+    std::cout << sizeof(int) << std::endl;
+    std::cout << sizeof(long) << std::endl;
+    std::cout << sizeof(double) << std::endl;
+    std::cout << sizeof(size_t) << std::endl;
     std::cin.get();
 }

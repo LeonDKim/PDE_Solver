@@ -25,23 +25,23 @@ public:
      */
     Point2D(float x_ = 0, float y_ = 0);
 
-    /**
-     * @brief Constructs a Point from another Point.
-     * @param point The point to copy.
-	 */
-    Point2D(const Point2D& point);
+ //   /**
+ //    * @brief Constructs a Point from another Point.
+ //    * @param point The point to copy.
+	// */
+ //   Point2D(const Point2D& point);
 
-    /**
-     * @brief Constructs a Point from a pair of coordinates.
-     * @param coords The coordinates to copy.
-	 */
-	Point2D(const std::pair<float, float>& coords);
+ //   /**
+ //    * @brief Constructs a Point from a pair of coordinates.
+ //    * @param coords The coordinates to copy.
+	// */
+	//Point2D(const std::pair<float, float>& coords);
 
-    /**
-     * @brief Constructs a Point from a vector of coordinates.
-     * @param coords The coordinates to copy.
-	 */
-	Point2D(const std::vector<float>& coords);
+ //   /**
+ //    * @brief Constructs a Point from a vector of coordinates.
+ //    * @param coords The coordinates to copy.
+	// */
+	//Point2D(const std::vector<float>& coords);
 
 
     /**
@@ -59,14 +59,14 @@ public:
     Point2D operator+(const Point2D& other) const;
 
     
-    Point2D operator-(const Point2D& other) const;
-    Point2D operator==(const Point2D& other) const;
-    Point2D operator!=(const Point2D& other) const;
+    //Point2D operator-(const Point2D& other) const;
+    //Point2D operator==(const Point2D& other) const;
+    //Point2D operator!=(const Point2D& other) const;
 
-    Point2D operator*(const float scalar) const;
-    friend float& operator*(const float& scalar, const Point2D& point);
+    //Point2D operator*(const float scalar) const;
+    //friend float& operator*(const float& scalar, const Point2D& point);
 
-    Point2D operator/(const float scalar) const;
+    //Point2D operator/(const float scalar) const;
 
 
     /**
