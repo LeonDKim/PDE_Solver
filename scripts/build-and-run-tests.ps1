@@ -4,5 +4,5 @@ cmake -S . -B $Build
 cmake --build $Build
 
 Set-Location $Build
-.\bin\Debug\PDE_SOLVER.exe
+ctest --output-on-failure
 Set-Location ..

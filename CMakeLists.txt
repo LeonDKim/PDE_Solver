@@ -19,3 +19,26 @@ add_executable(
     src/main.cpp
     src/Point2D.cpp
 )
+
+# ---- GoogleTest Setup ----
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/refs/heads/main.zip
+  DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+# ---- Tests ----
+add_executable(
+    PDE_SOLVER_TESTS 
+    src/Point2D.cpp
+    tests/test_point2d.cc
+)
+target_link_libraries(PDE_SOLVER_TESTS GTest::gtest_main)
+include(GoogleTest)
+gtest_discover_tests(PDE_SOLVER_TESTS)

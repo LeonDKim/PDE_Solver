@@ -11,12 +11,11 @@ public:
     float x; ///< The x-coordinate of the point.
     float y; ///< The y-coordinate of the point.
 
-
     const static Point2D zero; ///< A constant static point representing the origin (0, 0).
     const static Point2D left; ///< A constant static point representing the (-1, 0).
-    const static Point2D right;
-    const static Point2D up;
-    const static Point2D down;
+    const static Point2D right; ///< A constant static point representing the (1, 0).
+    const static Point2D up; ///< A constant static point representing the (0, 1).
+    const static Point2D down; ///< A constant static point representing the (0, -1).
 
     /**
      * @brief Constructs a Point with the given coordinates.
@@ -25,24 +24,23 @@ public:
      */
     Point2D(float x_ = 0, float y_ = 0);
 
- //   /**
- //    * @brief Constructs a Point from another Point.
- //    * @param point The point to copy.
-	// */
- //   Point2D(const Point2D& point);
+   /**
+    * @brief Constructs a Point from another Point.
+    * @param point The point to copy.
+	*/
+    Point2D(const Point2D& point);
 
- //   /**
- //    * @brief Constructs a Point from a pair of coordinates.
- //    * @param coords The coordinates to copy.
-	// */
-	//Point2D(const std::pair<float, float>& coords);
+   /**
+    * @brief Constructs a Point from a pair of coordinates.
+    * @param coords The coordinates to copy.
+	*/
+	Point2D(const std::pair<float, float>& coords);
 
    /**
     * @brief Constructs a Point from a vector of coordinates.
     * @param coords The coordinates to copy.
 	*/
 	Point2D(const std::vector<float>& coords);
-
 
     /**
      * @brief Accesses the x or y coordinate of the point.
@@ -60,7 +58,7 @@ public:
 
     
     //Point2D operator-(const Point2D& other) const;
-    //Point2D operator==(const Point2D& other) const;
+    Point2D operator==(const Point2D& other) const;
     //Point2D operator!=(const Point2D& other) const;
 
     //Point2D operator*(const float scalar) const;
