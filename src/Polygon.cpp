@@ -23,6 +23,17 @@ Polygon::Polygon(const std::vector<Point2D>& verts) : vertices(verts) {
         throw std::invalid_argument("Polygon requires at least 3 vertices");
     }
     validatePolygon();
+
+    // Calculate bounding box (minX, minY, maxX, maxY)
+    auto minmaxX = std::minmax_element(vertices.begin(), vertices.end(),
+        [](const Point2D& a, const Point2D& b) { return a.x < b.x; });
+    minX = minmaxX.first->x;
+	maxX = minmaxX.second->x;
+
+    auto minmaxY = std::minmax_element(vertices.begin(), vertices.end(),
+        [](const Point2D& a, const Point2D& b) { return a.y < b.y; });
+    minY = minmaxX.first->y;
+    maxY = minmaxX.second->y;
 }
 
 void Polygon::validatePolygon() const {

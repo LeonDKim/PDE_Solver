@@ -11,15 +11,15 @@
  * This class stores a sequence of vertices and checks for self-intersection.
  */
 class Polygon {
-private:
+public:
     /// @brief A vector of points representing the vertices of the polygon.
     std::vector<Point2D> vertices;
-
-	/// @brief Checks if the polygon is self-intersecting.
-    void validatePolygon() const;
-    static bool edgesIntersect(const Point2D& a1, const Point2D& a2,
-        const Point2D& b1, const Point2D& b2);
-
+    
+	float minX; ///< @brief Minimum x-coordinate of the polygon.
+	float minY; ///< @brief Minimum y-coordinate of the polygon.
+	float maxX; ///< @brief Maximum x-coordinate of the polygon.
+	float maxY; ///< @brief Maximum y-coordinate of the polygon.
+    
 public:
     /**
      * @brief Constructs a polygon from a list of vertices.
@@ -35,4 +35,17 @@ public:
      * @return Reference to the output stream.
      */
     friend std::ostream& operator<<(std::ostream& os, const Polygon& poly);
+
+private:
+	/** @brief Checks if the polygon is self-intersecting.
+     *  Temporarily implemented using brute force O(n^2) method.
+     *  Improving this to O(n log n) using a sweep line algorithm is possible.
+     */
+    void validatePolygon() const;
+
+    /** @brief Checks if two edges intersect.
+     *  Temporary helper method for validatePolygon.
+     */
+    static bool edgesIntersect(const Point2D& a1, const Point2D& a2,
+        const Point2D& b1, const Point2D& b2);
 };
