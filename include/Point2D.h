@@ -8,19 +8,29 @@
  */
 class Point2D {
 public:
-    float x; ///< The x-coordinate of the point.
-    float y; ///< The y-coordinate of the point.
+/*====================================  Attributes  =========================================*/
 
-    const static Point2D zero; ///< A constant static point representing the origin (0, 0).
-    const static Point2D left; ///< A constant static point representing the (-1, 0).
-    const static Point2D right; ///< A constant static point representing the (1, 0).
-    const static Point2D up; ///< A constant static point representing the (0, 1).
-    const static Point2D down; ///< A constant static point representing the (0, -1).
+    float x; /// The x-coordinate of the point.
+    float y; /// The y-coordinate of the point.
+
+
+/*=================================  Static Constants  =========================================*/
+
+    const static Point2D zero; /// A constant static point representing the origin (0, 0).
+    const static Point2D left; /// A constant static point representing the (-1, 0).
+    const static Point2D right; /// A constant static point representing the (1, 0).
+    const static Point2D up; /// A constant static point representing the (0, 1).
+    const static Point2D down; /// A constant static point representing the (0, -1).
+
+
+
+public:
+/*====================================  Constructors  =========================================*/
 
     /**
      * @brief Constructs a Point with the given coordinates.
-     * @param x_ The x-coordinate.
-     * @param y_ The y-coordinate.
+     * @param x_ The x-coordinate (default = 0).
+     * @param y_ The y-coordinate (default = 0).
      */
     Point2D(float x_ = 0, float y_ = 0);
 
@@ -41,6 +51,9 @@ public:
     * @param coords The coordinates to copy.
 	*/
 	Point2D(const std::vector<float>& coords);
+
+
+/*====================================  Operators  =========================================*/
 
     /**
      * @brief Accesses the x or y coordinate of the point.

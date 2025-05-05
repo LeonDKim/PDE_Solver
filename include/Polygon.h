@@ -1,4 +1,3 @@
-// Polygon.h
 #pragma once
 #include <vector>
 #include <stdexcept>
@@ -26,10 +25,10 @@ public:
 
     /**
      * @brief Constructs a polygon from a list of vertices.
-     * @param verts A vector of points representing the vertices (in order).
+     * @param vertices_ A vector of points representing the vertices (in order).
      * @throws std::invalid_argument if the polygon is self-intersecting.
      */
-    explicit Polygon(const std::vector<Point2D>& verts);
+    Polygon(const std::vector<Point2D>& vertices_);
 
 
 
@@ -68,6 +67,7 @@ public:
 
 
 /*==================================  Operators  =========================================*/
+
     /**
      * @brief Outputs the first vertex of the polygon.
      * @param os The output stream.
