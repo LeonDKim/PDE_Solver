@@ -9,7 +9,9 @@
 
 class DomainDiscretization {
 private:
-    Polygon& polygon; /// @brief The polygon representing the domain's boundary.
+/*====================================  Attributes  =========================================*/
+    
+
     int numX; /// @brief Number of discretization points along the x-axis.
     int numY; /// @brief Number of discretization points along the y-axis.
 
@@ -17,27 +19,18 @@ private:
     int dy; /// @brief Discretization step size along the y-axis.
 
 public:
-    /*====================================  Constructors  =========================================*/
+/*====================================  Constructors  =========================================*/
 
     /**
      * @brief Constructs a DomainDiscretization object with the given polygon and number of points.
-     * @param poly The polygon representing the domain's boundary.
-     * @param numX The number of discretization points along the x-axis.
-     * @param numY The number of discretization points along the y-axis.
+     * @param polygon_ The polygon representing the domain's boundary.
+     * @param numX_ The number of discretization points along the x-axis.
+     * @param numY_ The number of discretization points along the y-axis.
      */
-    DomainDiscretization(const Polygon& polygon_, int numX_, int numY_);
-
-
-
+    DomainDiscretization(Polygon& polygon_, int numX_, int numY_);
 
 
     /*====================================  Getters/Setters  =========================================*/
-
-    /**
-     * @brief Gets the polygon representing the domain's boundary.
-     * @return A const reference to the polygon.
-     */
-    const Polygon& getPolygon() const { return polygon; }
 
     /**
      * @brief Gets the number of discretization points along the x-axis.

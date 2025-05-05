@@ -19,6 +19,7 @@ add_executable(
     src/main.cpp
     src/Point2D.cpp
     src/Polygon.cpp
+    src/DomainDiscretization.cpp
 )
 
 # ---- GoogleTest Setup ----
