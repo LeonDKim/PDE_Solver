@@ -2,6 +2,7 @@
 #include "Polygon.h"
 #include <algorithm>
 
+/*==================================  Helper Functions  =========================================*/
 namespace {
     // Helper function for orientation check
     int orientation(const Point2D& p, const Point2D& q, const Point2D& r) {
@@ -18,6 +19,7 @@ namespace {
     }
 }
 
+/*====================================  Constructors  =========================================*/
 Polygon::Polygon(const std::vector<Point2D>& verts) : vertices(verts) {
     if (vertices.size() < 3) {
         throw std::invalid_argument("Polygon requires at least 3 vertices");
@@ -36,6 +38,8 @@ Polygon::Polygon(const std::vector<Point2D>& verts) : vertices(verts) {
     maxY = minmaxX.second->y;
 }
 
+
+/*==================================  Helper Methods  =========================================*/
 void Polygon::validatePolygon() const {
     const int n = vertices.size();
 
@@ -55,7 +59,6 @@ void Polygon::validatePolygon() const {
         }
     }
 }
-
 bool Polygon::edgesIntersect(const Point2D& a1, const Point2D& a2,
     const Point2D& b1, const Point2D& b2) {
     // Orientation calculations
@@ -76,6 +79,15 @@ bool Polygon::edgesIntersect(const Point2D& a1, const Point2D& a2,
     return false;
 }
 
+
+/*==================================  Getters/Setters  =========================================*/
+const std::vector<Point2D>& Polygon::getVertices() const { return vertices; }
+float Polygon::getMinX() const { return minX; }
+float Polygon::getMinY() const { return minY; }
+float Polygon::getMaxX() const { return maxX; }
+float Polygon::getMaxY() const { return maxY; }
+
+/*====================================  Operators  =========================================*/
 std::ostream& operator<<(std::ostream& os, const Polygon& poly) {
     if (!poly.vertices.empty()) {
         const Point2D& p = poly.vertices.front();
