@@ -48,24 +48,55 @@ public:
      */
     float& operator[](size_t index);
 
-
     /**
      * @brief Adds two points component-wise.
      * @param other The point to add.
      * @return A new Point that is the sum of this point and the other point.
      */
     Point2D operator+(const Point2D& other) const;
-
     
-    //Point2D operator-(const Point2D& other) const;
-    Point2D operator==(const Point2D& other) const;
-    //Point2D operator!=(const Point2D& other) const;
+    /**
+     * @brief Subtracts two points component-wise.
+     * @param other The point to subtract.
+     * @return A new Point that is this point minus the other point.
+     */
+    Point2D operator-(const Point2D& other) const;
 
-    //Point2D operator*(const float scalar) const;
-    //friend float& operator*(const float& scalar, const Point2D& point);
+    /**
+     * @brief Equality comparison of two points.
+     * @param other The point to compare.
+     * @return Boolean value
+     */
+    bool operator==(const Point2D& other) const;
 
-    //Point2D operator/(const float scalar) const;
+    /**
+     * @brief Not equals comparison of two points.
+     * @param other The point to compare.
+     * @return Boolean value
+     */
+    bool operator!=(const Point2D& other) const;
 
+    /**
+     * @brief Multiplies a point with a scalar.
+     * @param other The point to multiply.
+     * @return A new Point that is the point multiplied by the scalar.
+     */
+    Point2D operator*(const float scalar) const;
+    
+    /**
+     * @brief Multiplies a scalar with a point.
+     * @param scalar The scalar to multiply with.
+     * @param point The point to multiply.
+     * @return A new Point that is a scalar multiplied by the point.
+     */
+    friend Point2D operator*(const float& scalar, const Point2D& point);
+
+    /**
+     * @brief Divides a point by a scalar
+     * @param other The point to divide.
+     * @return A new Point that is the point divided by the scalar.
+     */
+    Point2D operator/(const float scalar) const;
 
     /**
      * @brief Outputs the point in the format (x, y).

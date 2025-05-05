@@ -59,3 +59,78 @@ TEST(TestPoint2D, ConstructFromVector) {
     EXPECT_EQ(p1.x, 1);
     EXPECT_EQ(p1.y, 1);
 }
+
+TEST(TestPoint2D, Equals) {
+    Point2D p1{1, 1};
+    Point2D p2{1, 1};
+
+    bool expected = true;
+    bool actual = p1 == p2;
+
+    EXPECT_EQ(expected, actual);
+}
+
+TEST(TestPoint2D, NotEquals) {
+    Point2D p1{1, 1};
+    Point2D p2{2, 2};
+
+    bool expected = true;
+    bool actual = p1 != p2;
+
+    EXPECT_EQ(expected, actual);
+}
+
+TEST(TestPoint2D, Subtract) {
+    Point2D p1{2, 2};
+    Point2D p2{1, 1};
+
+    float expected = 1;
+    Point2D actual = p1 - p2;
+
+    EXPECT_EQ(expected, actual.x);
+    EXPECT_EQ(expected, actual.y);
+}
+
+TEST(TestPoint2D, Addition) {
+    Point2D p1{1, 1};
+    Point2D p2{1, 1};
+
+    float expected = 2;
+    Point2D actual = p1 + p2;
+
+    EXPECT_EQ(expected, actual.x);
+    EXPECT_EQ(expected, actual.y);
+}
+
+TEST(TestPoint2D, ScalarAndPoint2DMultiplication) {
+    Point2D p1{1, 1};
+    float scalar = 2;
+
+    float expected = 2;
+    Point2D actual = scalar * p1;
+
+    EXPECT_EQ(expected, actual.x);
+    EXPECT_EQ(expected, actual.y);
+}
+
+TEST(TestPoint2D, Point2DAndScalarMultiplication) {
+    Point2D p1{1, 1};
+    float scalar = 2;
+
+    float expected = 2;
+    Point2D actual = p1 * scalar;
+
+    EXPECT_EQ(expected, actual.x);
+    EXPECT_EQ(expected, actual.y);
+}
+
+TEST(TestPoint2D, Point2DAndScalarDivision) {
+    Point2D p1{2, 2};
+    float scalar = 2;
+
+    float expected = 1;
+    Point2D actual = p1 / scalar;
+
+    EXPECT_EQ(expected, actual.x);
+    EXPECT_EQ(expected, actual.y);
+}
