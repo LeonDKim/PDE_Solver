@@ -18,6 +18,7 @@ add_executable(
     PDE_SOLVER 
     src/main.cpp
     src/Point2D.cpp
+    src/Polygon.cpp
 )
 
 # ---- GoogleTest Setup ----
