@@ -1,10 +1,18 @@
 #include "Point2D.h"
 
+
+
+/*====================================  Static Constants  =========================================*/
+
 const Point2D Point2D::zero{0, 0};
 const Point2D Point2D::left{-1, 0};
 const Point2D Point2D::right{1, 0};
 const Point2D Point2D::up{0, 1};
 const Point2D Point2D::down{0, -1};
+
+
+
+/*====================================  Constructors  =========================================*/
 
 Point2D::Point2D(float x_, float y_) : x{ x_ }, y{ y_ } {}
 
@@ -24,6 +32,10 @@ Point2D::Point2D(const std::vector<float> &coords)
         throw std::invalid_argument("Vector array must be of size 2.");
     }
 }
+
+
+
+/*====================================  Operators  =========================================*/
 
 float &Point2D::operator[](size_t index)
 {
