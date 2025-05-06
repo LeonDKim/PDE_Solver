@@ -12,11 +12,13 @@ private:
 /*====================================  Attributes  =========================================*/
     
 
-    int numX; /// @brief Number of discretization points along the x-axis.
-    int numY; /// @brief Number of discretization points along the y-axis.
+    int numX; /// @brief Number of discretization intervals along the x-axis. @note The number of discretization points is numX + 1, as the endpoints are included.
+    int numY; /// @brief Number of discretization intervals along the y-axis. @note The number of discretization points is numY + 1, as the endpoints are included.
 
     int dx; /// @brief Discretization step size along the x-axis.  
     int dy; /// @brief Discretization step size along the y-axis.
+
+    Polygon& polygon; /// @brief Reference to the polygon representing the domain's boundary.
 
 public:
 /*====================================  Constructors  =========================================*/
