@@ -77,6 +77,28 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const Polygon& poly);
 
 
+ /*================================== Other Methods  =========================================*/
+
+
+    /**
+    * @brief Checks if a point is in the interior of the polygon using the ray-casting algorithm O(n).
+    * 
+    * @param point The point to check.
+    * @return True if the point is inside the polygon, false otherwise.
+    */
+    bool containsPoint(const Point2D& point) const;
+
+
+    /**
+     * @brief Checks if a point is on the boundary of the polygon O(n).
+     * 
+     * @param point The point to check.
+     * @param epsilon The tolerance for floating-point comparison (default = 1e-10).
+     * @return True if the point is on the boundary, false otherwise.
+     */
+    bool isOnBoundary(const Point2D& point, float epsilon = 1e-10f) const;
+
+
 
 
 private:
@@ -85,12 +107,11 @@ private:
 	/** @brief Checks if the polygon is self-intersecting.
      *  Temporarily implemented using brute force O(n^2) method.
      *  Improving this to O(n log n) using a sweep line algorithm is possible.
+     *  
+     *  @note Future improvements: Shamos–Hoey algorithm, Bentley–Ottmann algorithm
+     *  @throws std::invalid_argument if the polygon is self-intersecting.
      */
     void validatePolygon() const;
+    
 
-    /** @brief Checks if two edges intersect.
-     *  Temporary helper method for validatePolygon.
-     */
-    static bool edgesIntersect(const Point2D& a1, const Point2D& a2,
-        const Point2D& b1, const Point2D& b2);
 };
