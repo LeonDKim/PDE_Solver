@@ -7,7 +7,7 @@
 
 
 
-class DomainDiscretization {
+class FDMGrid {
 private:
 /*====================================  Attributes  =========================================*/
     
@@ -29,7 +29,7 @@ public:
      * @param numX_ The number of discretization points along the x-axis.
      * @param numY_ The number of discretization points along the y-axis.
      */
-    DomainDiscretization(Polygon& polygon_, int numX_, int numY_);
+    FDMGrid(Polygon& polygon_, int numX_, int numY_);
 
 
     /*====================================  Getters/Setters  =========================================*/
