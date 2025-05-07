@@ -57,8 +57,8 @@ Polygon::Polygon(const std::vector<Point2D>& verts) : vertices(verts) {
 
     auto minmaxY = std::minmax_element(vertices.begin(), vertices.end(),
         [](const Point2D& a, const Point2D& b) { return a.y < b.y; });
-    minY = minmaxX.first->y;
-    maxY = minmaxX.second->y;
+    minY = minmaxY.first->y;
+    maxY = minmaxY.second->y;
 }
 
 /*=================================  Other Methods   ==============================================*/

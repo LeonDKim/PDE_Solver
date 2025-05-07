@@ -6,12 +6,17 @@
 int main()
 {   
 
-    Polygon polygon( { {.3,.3}, {1,0}, {1,1},  {.5,1} } ); 
+    Polygon polygon( { {.3,0}, {.5,.5}, {1.2 , 1} ,{1,1.2}, {.7,1}, {0,.5}, {0,.2} } ); 
 
-    FDMGrid grid(30, 30, polygon); // Create a grid with 10x10 points
+    // std::cout << "Polygon vertices: " << polygon << std::endl;
+    // std::cout << "Polygon minX: " << polygon.getMinX() << std::endl;
+    // std::cout << "Polygon minY: " << polygon.getMinY() << std::endl;
+    // std::cout << "Polygon maxX: " << polygon.getMaxX() << std::endl;
+    // std::cout << "Polygon maxY: " << polygon.getMaxY() << std::endl;
 
-    for(int i = 0; i < grid.getNx(); i++) {
-        for (int j = grid.getNy() - 1; j >= 0; j--) {
+    FDMGrid grid(30, 30, polygon); 
+    for (int j = grid.getNy() - 1; j >= 0; j--) {
+        for(int i = 0; i < grid.getNx(); i++) {
             int celltype = static_cast<int>(grid.getCellType(i, j));
             std::cout << (celltype == -1 ? "" : " ") << static_cast<int>(celltype) << " ";
         }
