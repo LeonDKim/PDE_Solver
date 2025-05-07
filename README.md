@@ -1,5 +1,5 @@
 # Overview
-This project is a general-purpose 2D PDE solver for polygonal regions, supporting both Finite Difference Method (FDM) and Finite Element Method (FEM). Development is ongoing; currently, the FDM grid generation from arbitrary polygonal domains has been implemented.
+This project is a general-purpose 2D PDE solver for arbitrary regions, with the eventual goal of leveraging GPGPU computation via CUDA and supporting multiple numerical methods. Development is ongoing; so far, FDM grid generation for arbitrary polygonal domains has been implemented.
 
 
 
