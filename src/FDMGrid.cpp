@@ -20,7 +20,53 @@ FDMGrid::FDMGrid(int nx_, int ny_, Polygon& polygon) : nx(nx_), ny(ny_) {
 }
 
 
+Point2D FDMGrid::indexToPoint(int i, int j) const {
+    return {originX + i * dx, originY + j * dy};
+}
 
+std::pair<int, int> FDMGrid::pointToIndex(const Point2D& point) const {
+    int i = std::round((point.x - originX) / dx);
+    int j = std::round((point.y - originY) / dy);
+    return {i, j};
+}
+
+GridType FDMGrid::getCellType(int i, int j) const {
+    if (!isValidIndex(i, j)) return EXTERIOR;
+    return gridMatrix[i][j];
+}
+
+void FDMGrid::setCellType(int i, int j, GridType type)  {
+    if (isValidIndex(i, j)) {
+        gridMatrix[i][j] = type;
+    }
+}
+
+bool FDMGrid::isValidIndex(int i, int j) const {
+    return i >= 0 && i < nx && j >= 0 && j < ny;
+}
+
+
+std::vector<Point2D> FDMGrid::getPointsOfType(GridType type) const {
+    std::vector<Point2D> points;
+    for (int i = 0; i < nx; i++) {
+        for (int j = 0; j < ny; j++) {
+            if (gridMatrix[i][j] == type) {
+                points.push_back(indexToPoint(i, j));
+            }
+        }
+    }
+    return points;
+}
+
+std::vector<Point2D> FDMGrid::getBoundaryPoints() const {
+    return getPointsOfType(BOUNDARY);
+}
+std::vector<Point2D> FDMGrid::getInteriorPoints() const {
+    return getPointsOfType(INTERIOR);
+}
+std::vector<Point2D> FDMGrid::getExteriorPoints() const {
+    return getPointsOfType(EXTERIOR);
+}
 
 
 

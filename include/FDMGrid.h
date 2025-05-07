@@ -24,13 +24,16 @@ enum GridType: int8_t {
  */
 class FDMGrid {
 private:
-    float originX, originY;  // Bottom-left corner of the grid
-    float dx, dy;            // Grid spacing
-    int nx, ny;               // Number of grid points in each direction
-    std::vector<std::vector<GridType>> gridMatrix;  // Matrix storing cell classifications
+
+/*====================================  Attributes  =========================================*/
+
+    float originX, originY;  /// @brief Bottom-left corner of the grid
+    float dx, dy;            /// @brief Grid spacing
+    int nx, ny;              /// @brief Number of grid points in each direction
+    std::vector<std::vector<GridType>> gridMatrix; /// @brief Matrix storing cell classifications
     
 public:
-    // Constructor
+/*====================================  Constructor  =========================================*/
 
     /**
      * @brief Constructs a grid based on the provided polygon.
@@ -39,85 +42,93 @@ public:
      * @param polygon The polygon defining the interior/exterior regions.
      */
     FDMGrid(int nx_, int ny_, Polygon& polygon);
-        
-    
-    // Convert grid indices to world coordinates
-    Point2D indexToPoint(int i, int j) const {
-        return {originX + i * dx, originY + j * dy};
-    }
-    
-    // Convert world coordinates to grid indices
-    std::pair<int, int> pointToIndex(const Point2D& point) const {
-        int i = std::round((point.x - originX) / dx);
-        int j = std::round((point.y - originY) / dy);
-        return {i, j};
-    }
-    
-    // Check if indices are within grid bounds
-    bool isValidIndex(int i, int j) const {
-        return i >= 0 && i < nx && j >= 0 && j < ny;
-    }
-    
-    // Get cell type at specified indices
-    GridType getCellType(int i, int j) const {
-        if (!isValidIndex(i, j)) return EXTERIOR;
-        return gridMatrix[i][j];
-    }
 
 
-    // Accessors
+/*==================================== Getters =============== ==========================*/
     float getDx() const { return dx; }
     float getDy() const { return dy; }
     int getNx() const { return nx; }
     int getNy() const { return ny; }
 
-private:
-    // Mark a cell as a specific type
-    void setCellType(int i, int j, GridType type) {
-        if (isValidIndex(i, j)) {
-            gridMatrix[i][j] = type;
-        }
-    }
+    const std::vector<std::vector<GridType>>& getGridMatrix() const { return gridMatrix; }
+        
+/*====================================  Methods  =========================================*/
+    /**
+      * @brief  Converts grid indices to world coordinates.
+      * @param i The x index of the grid cell.
+      * @param j The y index of the grid cell.
+      * @return The corresponding Point2D in world coordinates.     
+      */
+    Point2D indexToPoint(int i, int j) const;
+    
+    /**
+      * @brief Converts world coordinates to grid indices.
+      * @param point The Point2D in world coordinates.
+      * @return A pair of indices (i, j) corresponding to the grid cell.
+      *         The indices are rounded to the nearest integer.
+      */
+    std::pair<int, int> pointToIndex(const Point2D& point) const;
+
+    /**
+     * @brief Gets the grid type of a specific cell.
+     * @param i The x index of the grid cell.
+     * @param j The y index of the grid cell.
+     * @return The type of the cell (INTERIOR, EXTERIOR, BOUNDARY, UNDEFINED).
+     */
+    GridType getCellType(int i, int j) const;
+    
 
 
-    // Get points of a specific type
-    std::vector<Point2D> getPointsOfType(GridType type) const {
-        std::vector<Point2D> points;
-        for (int i = 0; i < nx; i++) {
-            for (int j = 0; j < ny; j++) {
-                if (gridMatrix[i][j] == type) {
-                    points.push_back(indexToPoint(i, j));
-                }
-            }
-        }
-        return points;
-    }
+    /**
+     * @brief Checks if the given indices are within the grid bounds.
+     * @param i The x index of the grid cell.
+     * @param j The y index of the grid cell.
+     * @return True if indices are valid, false otherwise.
+     */
+    bool isValidIndex(int i, int j) const;
+
+
+    /**
+     * @brief Gets the points of a specific type in the grid.
+     * @param type The type of cell to get (INTERIOR, EXTERIOR, BOUNDARY).
+     * @return A vector of Point2D representing the points of the specified type.
+     */
+    std::vector<Point2D> getPointsOfType(GridType type) const;
     
-    // Get boundary points
-    std::vector<Point2D> getBoundaryPoints() const {
-        return getPointsOfType(BOUNDARY);
-    }
+    /**
+     * @brief Gets the points of type BOUNDARY in the grid.
+     *  
+     * @return A vector of Point2D representing the boundary points.
+     */
+    std::vector<Point2D> getBoundaryPoints() const ;
     
-    // Get interior points
-    std::vector<Point2D> getInteriorPoints() const {
-        return getPointsOfType(INTERIOR);
-    }
+    /**
+     * @brief Gets the points of type INTERIOR in the grid.
+     *  
+     * @return A vector of Point2D representing the interior points.
+     */
+    std::vector<Point2D> getInteriorPoints() const;
     
-    // Get exterior points
-    std::vector<Point2D> getExteriorPoints() const {
-        return getPointsOfType(EXTERIOR);
-    }
+    /**
+     * @brief Gets the points of type EXTERIOR in the grid.
+     *  
+     * @return A vector of Point2D representing the exterior points.
+     */
+    std::vector<Point2D> getExteriorPoints() const;
     
 
     
-    // Get the full grid data
-    const std::vector<std::vector<GridType>>& getCellTypes() const {
-        return gridMatrix;
-    }
-
 
 private:
 /*====================================  Helper Methods  =========================================*/
+    /**
+     * @brief Sets the type of a specific cell in the grid.
+     * @param i The x index of the grid cell.
+     * @param j The y index of the grid cell.
+     * @param type The type to set (INTERIOR, EXTERIOR, BOUNDARY).
+     */
+    void setCellType(int i, int j, GridType type);
+
 
     /**
      * @brief Makes first pass to mark the boundaries of the polygon on the grid.

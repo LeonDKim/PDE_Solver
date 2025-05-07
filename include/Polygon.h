@@ -81,11 +81,11 @@ public:
 
 
     /**
-    * @brief Checks if a point is in the interior of the polygon using the ray-casting algorithm O(n).
-    * 
-    * @param point The point to check.
-    * @return True if the point is inside the polygon, false otherwise.
-    */
+     * @brief Checks if a point is in the interior of the polygon using the ray-casting algorithm O(n).
+     * 
+     * @param point The point to check.
+     * @return True if the point is inside the polygon, false otherwise.
+     */
     bool containsPoint(const Point2D& point) const;
 
 
