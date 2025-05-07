@@ -35,4 +35,4 @@
 .vscode/
 *.pdb
 x64/
-build/
+build/**
