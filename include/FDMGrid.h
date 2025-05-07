@@ -45,12 +45,14 @@ public:
 
 
 /*==================================== Getters =============== ==========================*/
+
+
     float getDx() const { return dx; }
     float getDy() const { return dy; }
     int getNx() const { return nx; }
     int getNy() const { return ny; }
-
     const std::vector<std::vector<GridType>>& getGridMatrix() const { return gridMatrix; }
+
         
 /*====================================  Methods  =========================================*/
     /**
@@ -133,12 +135,14 @@ private:
     /**
      * @brief Makes first pass to mark the boundaries of the polygon on the grid.
      * @param polygon The polygon defining the interior/exterior regions.
+     * @note This method uses Bresenham's line algorithm to mark the boundary cells.
      * */
     void markBoundaries(const Polygon& polygon);
     
     /**
      * @brief Fills the grid with interior and exterior classifications based on the polygon.
      * @param polygon The polygon defining the interior/exterior regions.
+     * @note This method uses a scan-line fill algorithm to classify the cells.
      * */
     void fillInteriorExterior(const Polygon& polygon);
     
